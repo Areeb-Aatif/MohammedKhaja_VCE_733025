@@ -207,71 +207,81 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
-		if(students == null){
+		if(student == null)
 			throw new IllegalArgumentException();
-		}
-		else{
-			for(int j=0;j<students.length;j++){
-				if(student.compareTo(students[j]) == 0){
-					int index = j;
-					int len = students.length-index;
-					Student[] students1 = new Student[students.length-len+1];
-					for(int i=0;i<students1.length;i++){
-						students1[i] = students[i];
-					}
-					students = new Student[students1.length];
-					for(int i=0;i<students.length;i++){
-						students[i]=students1[i];
-					}
+		else
+		{
+			int ind=0;
+			for(ind=0;ind<students.length;ind++)
+			{
+				if(students[ind] == student)
+				{
+					break;
 				}
 			}
+			
+			Student s[] = new Student[ind+1];
+			for(int i=0;i<=ind;i++)
+			{
+				s[i] = students[i];
+			}
+            students = null;
+			
+			students = s;
+			
+			
 		}
 	}
 
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
-		if(index < 0 || index > students.length){
+		if(index < 0 || index >= students.length)
 			throw new IllegalArgumentException();
-		}
-		else{
-			int len = students.length-index;
-			Student[] students1 = new Student[students.length-len+1];
-			int j=0;
-			for(int i=index;i<students1.length;i++){
-				students1[j] = students[i+1];
-				j++;
+		else
+		{
+			Student s[] = new Student[students.length-index-1];
+			int k=0;
+			for(int i=index;i<students.length;i++)
+			{
+				s[k] = students[i]; k++;
 			}
-			students = new Student[students1.length];
-			for(int i=0;i<students.length;i++){
-				students[i]=students1[i];
-			}
+			
+            students = null;
+			
+			students = s;
+			
 		}
 	}
 
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
-		if(students == null){
+		if(student == null)
 			throw new IllegalArgumentException();
-		}
-		else{
-			for(int j=0;j<students.length;j++){
-				if(student.compareTo(students[j]) == 0){
-					int index = j;
-					int len = students.length-index;
-					Student[] students1 = new Student[students.length-len+1];
-					int k=0;
-					for(int i=index;i<students1.length;i++){
-						students1[k] = students[i+1];
-						k++;
-					}
-					students = new Student[students1.length];
-					for(int i=0;i<students.length;i++){
-						students[i]=students1[i];
-					}
+		else
+		{
+			int ind=0;
+			for(ind=0;ind<students.length;ind++)
+			{
+				if(students[ind] == student)
+				{
+					break;
 				}
 			}
+			
+			
+			Student s[] = new Student[students.length-ind-1];
+			int k=0;
+			for(int i=ind;i<students.length;i++)
+			{
+				s[k] = students[i]; k++;
+			}
+			
+            students = null;
+			
+			students = s;
+			
 		}
 	}
 

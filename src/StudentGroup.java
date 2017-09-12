@@ -164,43 +164,38 @@ public class StudentGroup implements StudentArrayOperation {
 		// Add your implementation here
 		if(student == null)
 			throw new IllegalArgumentException();
-		else
-		{
-			int ind=0,count=0;
-			for(ind=0;ind<students.length;ind++)
+		else{
+			int i=0,k=0;
+			for(i=0;i<students.length;i++)
 			{
-				if(students[ind] == student)
+				if(students[i] == student)
 				{
 					break;
 				}
 				else
 				{
-					count++;
+					k++;
 				}
 			}
-			if(count == students.length)
+			if(k == students.length)
 			{
 				throw new IllegalArgumentException("Student not exist");
 			}
 			
-			int k=0;
+			int l=0;
 	        Student s[] = new Student[students.length-1];
 			
-			for(int i=0;i<ind;i++)
+			for(int j=0;j<i;j++)
 			{
-				s[k] = students[i];k++;
+				s[l] = students[j];l++;
 			}
 			
-			for(int i=ind+1;i<students.length;i++)
+			for(int j=i+1;j<students.length;j++)
 			{
-				s[k] = students[i];k++;
-			}
-			
-			students = null;
-			
-			students = s;
-			
-			
+				s[l] = students[j];l++;
+			}	
+			students = null;		
+			students = s;			
 		}
 	}
 
@@ -216,10 +211,8 @@ public class StudentGroup implements StudentArrayOperation {
 			{
 				s[i] = students[i];
 			}
-            students = null;
-			
+            students = null;		
 			students = s;
-		
 		}
 	}
 
@@ -230,25 +223,21 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		else
 		{
-			int ind=0;
-			for(ind=0;ind<students.length;ind++)
+			int k=0;
+			for(k=0;k<students.length;k++)
 			{
-				if(students[ind] == student)
+				if(students[k] == student)
 				{
 					break;
 				}
 			}
-			
-			Student s[] = new Student[ind+1];
-			for(int i=0;i<=ind;i++)
+			Student s[] = new Student[k+1];
+			for(int i=0;i<=k;i++)
 			{
 				s[i] = students[i];
 			}
             students = null;
-			
-			students = s;
-			
-			
+			students = s;	
 		}
 	}
 
@@ -264,12 +253,9 @@ public class StudentGroup implements StudentArrayOperation {
 			for(int i=index;i<students.length;i++)
 			{
 				s[k] = students[i]; k++;
-			}
-			
-            students = null;
-			
-			students = s;
-			
+			}		
+            students = null;	
+			students = s;	
 		}
 	}
 
@@ -280,27 +266,23 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		else
 		{
-			int ind=0;
-			for(ind=0;ind<students.length;ind++)
+			int m=0;
+			for(m=0;m<students.length;m++)
 			{
-				if(students[ind] == student)
+				if(students[m] == student)
 				{
 					break;
 				}
 			}
-			
-			
-			Student s[] = new Student[students.length-ind-1];
+			Student s[] = new Student[students.length-m-1];
 			int k=0;
-			for(int i=ind;i<students.length;i++)
+			for(int i=m;i<students.length;i++)
 			{
-				s[k] = students[i]; k++;
-			}
-			
-            students = null;
-			
-			students = s;
-			
+				s[k] = students[i]; 
+				k++;
+			}			
+            students = null;			
+			students = s;			
 		}
 	}
 
@@ -377,7 +359,6 @@ public class StudentGroup implements StudentArrayOperation {
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
 		Date d1=new Date(date.getDate()+days);
-		//	Date d2=new Date(date.getDate()-days);
 			int c=0,c1=0;
 			if(date==null)
 				throw new IllegalArgumentException();

@@ -162,45 +162,64 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
-		if(students == null){
+		if(student == null)
 			throw new IllegalArgumentException();
-		}
-		for(int j=0;j<students.length;j++){
-			if(student.compareTo(students[j]) == 0){
-				int index = j;
-				Student[] students1 = new Student[students.length-1];
-				for(int i=0;i<index;i++){
-					students1[i] = students[i];
+		else
+		{
+			int ind=0,count=0;
+			for(ind=0;ind<students.length;ind++)
+			{
+				if(students[ind] == student)
+				{
+					break;
 				}
-				for(int i=index+1;i<students.length;i++){
-					students1[i-1] = students[i];
+				else
+				{
+					count++;
 				}
-				students = new Student[students1.length];
-				for(int i=0;i<students.length;i++){
-					students[i]=students1[i];
-				}
-				break;
 			}
-			throw new IllegalArgumentException("Student not exist");
+			if(count == students.length)
+			{
+				throw new IllegalArgumentException("Student not exist");
+			}
+			
+			int k=0;
+	        Student s[] = new Student[students.length-1];
+			
+			for(int i=0;i<ind;i++)
+			{
+				s[k] = students[i];k++;
+			}
+			
+			for(int i=ind+1;i<students.length;i++)
+			{
+				s[k] = students[i];k++;
+			}
+			
+			students = null;
+			
+			students = s;
+			
+			
 		}
 	}
 
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
-		if(index < 0 || index > students.length){
+		if(index < 0 || index >= students.length)
 			throw new IllegalArgumentException();
-		}
-		else{
-			int len = students.length-index;
-			Student[] students1 = new Student[students.length-len+1];
-			for(int i=0;i<students1.length;i++){
-				students1[i] = students[i];
+		else
+		{
+			Student s[] = new Student[index+1];
+			for(int i=0;i<=index;i++)
+			{
+				s[i] = students[i];
 			}
-			students = new Student[students1.length];
-			for(int i=0;i<students.length;i++){
-				students[i]=students1[i];
-			}
+            students = null;
+			
+			students = s;
+		
 		}
 	}
 

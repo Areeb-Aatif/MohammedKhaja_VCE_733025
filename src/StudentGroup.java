@@ -32,19 +32,17 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
-		if(students == null){
+		if(students==null)
+		{	
 			throw new IllegalArgumentException();
 		}
-		else{
-			/*for(int i=0;i<students.length;i++){
-				//this.students[i] = students[i];
-				this.students[i].setId(students[i].getId());
-				this.students[i].setFullName(students[i].getFullName());
-				this.students[i].setBirthDate(students[i].getBirthDate());
-				this.students[i].setAvgMark(students[i].getAvgMark());
-			}*/
-			this.students = new Student[students.length];
-			this.students = students;
+		else
+		{
+			int n = students.length;
+			for(int i=0;i<n;i++)
+			{
+				this.students[i] = students[i];
+			}
 		}
 	}
 
@@ -280,17 +278,18 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
-		Student temp;
-		for(int i=0; i < students.length; i++){  
-            for(int j=1; j < (students.length-i); j++){  
-                     if(students[j-1].getAvgMark() > students[j].getAvgMark()){  
-                            //swap elements  
-                            temp = students[j-1];  
-                            students[j-1] = students[j];  
-                            students[j] = temp;  
-                    }  
-            	}      
-            }  
+		for(int i=0;i<students.length;i++)
+		{
+			for(int j=0;j<students.length-i;j++)
+			{
+				if( students[j].compareTo(students[j+1]) > 0)
+				{
+						Student temp = students[j];
+						students[j] = students[j+1];
+						students[j+1] = temp;
+				}
+			}
+		} 
 	}
 
 	@Override
